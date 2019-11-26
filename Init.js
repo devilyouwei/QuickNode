@@ -28,8 +28,8 @@ class Init{
         //取得控制器和方法
         let ctl = path.split('/')[1]
         let act = path.split('/')[2]
-        if(!ctl) return next('Error: No Controller given')
-        if(!act) return next('Error: No Action given')
+        if(!ctl) ctl = 'Index'
+        if(!act) act = 'index'
 
         try {
             let Controller = require(CTRL+ctl)
