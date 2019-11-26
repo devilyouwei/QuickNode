@@ -1,0 +1,18 @@
+{
+    "name": "RestfulNode",
+    "description": "A framework that makes it easier to create restful APIs for web",
+    "version": "0.1.0",
+    "dependencies": {
+        "express": "latest",
+        "mysql2": "latest",
+        "connect-multiparty": "latest",
+        "trim": "latest",
+        "htmlspecialchars": "latest",
+        "md5": "latest",
+        "ali-oss": "latest",
+        "nodemailer": "latest",
+        "nodemailer-smtp-transport": "latest",
+        "superagent": "latest",
+        "app-root-path": "latest"
+    }
+}
