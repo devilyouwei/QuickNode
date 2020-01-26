@@ -1,6 +1,7 @@
 {
-    "region": "",
+    "region": "oss-us-west-1",
     "accessKeyId": "",
     "accessKeySecret": "",
-    "bucket": ""
+    "bucket": "diet-us"
 }
+

@@ -1,8 +1,9 @@
 {
-    "host": "smtp.qq.com",
-    "secure": false,
+    "host": "smtp.gmail.com",
+    "secure": true,
     "auth": {
-        "user": "",
-        "pass": ""
+        "type":"login",
+        "user":"",
+        "pass":""
     }
 }

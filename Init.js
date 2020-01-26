@@ -9,15 +9,11 @@ const CTRL = __dirname+'/Controller/'
 
 class Init{
     static controller(app){
-        if(!app){
-            return next('No App Object')
-        }
+        if(!app) return next('No App Object')
 
 		//http统一请求
         app.all('*',(req,res,next)=>{
-            if(req.method=="GET"){
-                req.body = req.query // get强制转post参数
-            }
+            if(req.method=="GET") req.body = req.query // get强制转post参数
             this.onlyPost(req,res,next)
         })
     }
@@ -28,14 +24,15 @@ class Init{
         //取得控制器和方法
         let ctl = path.split('/')[1]
         let act = path.split('/')[2]
-        if(!ctl) ctl = 'Index'
-        if(!act) act = 'index'
+        if(!ctl) return next('Error: No Controller given')
+        if(!act) return next('Error: No Action given')
 
         try {
             let Controller = require(CTRL+ctl)
             let Action = Controller[act]
             Action(req,res)
         } catch(err) {
+            next(err.message)
             throw err
         }
     }

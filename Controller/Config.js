@@ -6,7 +6,9 @@ class Config{
         return res.json({status:1,data:data,msg:'languages'})
     }
     static async index(req,res){
-        return res.json({status:1,msg:'......'})
+        let id = req.body.id
+        return res.end(`Id is:${id}`)
+
     }
 }
 module.exports=Config

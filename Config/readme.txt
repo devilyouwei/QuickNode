@@ -1,2 +1,2 @@
-Third party server configuration
-第三方服务器配置
+各种服务配置文件
+various Server Config Files

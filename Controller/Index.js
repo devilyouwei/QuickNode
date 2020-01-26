@@ -2,8 +2,7 @@ const $ = require('./private/Public.js')
 const db = require('./private/DB.js')
 class Index{
     static async index(req,res){
-        res.send('<h1> Welcome to RestfulNode!</h1>')
-        res.send('<h2> It works!</h2>')
+        res.end('<h1 style="text-align:center;padding-top:10%;"> Welcome to QuickNode!</h1>')
     }
 }
 module.exports=Index
