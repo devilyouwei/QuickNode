@@ -4,7 +4,7 @@
 
 ## Introduction
 
-QuickNode is an open-source project separated from Qbite.
+QuickNode is an open-source project separated from [Qbite](https://github.com/devilyouwei/Qbite).
 
 We(Qbyte LLC US) now use QuickNode as a back-end core framework for our projects. Our projects work well and stable on this framework but there may be still some unknown vulnerabilities or bugs that need to be found out and fixed. We are very happy to share this with all the developers and help you have a simple web framework to create various JSON or plain text APIs.
 
@@ -89,7 +89,7 @@ Now, you can try to visit: http://localhost:3000/Test/test
 
 Example works!
 
-## Config and useful libs
+## Config
 
 The directory 'Config' is used to store the configuration files for your project.
 
