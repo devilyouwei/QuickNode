@@ -1,16 +1,13 @@
-![Qbite](https://wap.qbite.us/favicon.png "Qbite, faster order")
 
 # QuickNode
+
+![Qbite](https://wap.qbite.us/favicon.png "Qbite, faster order")
 
 ***An easier way to create restful APIs for web applications with Node.js***
 
 ## Introduction
 
 QuickNode is an open-source project separated from [Qbite](https://github.com/devilyouwei/Qbite).
-
-![Qbite](https://github-devilyouwei.oss-us-west-1.aliyuncs.com/qbite/qbite%20qrcode.jpg)
-
-*Scan the QRcode and order what you want!*
 
 We(Qbyte LLC US) now use QuickNode as a back-end core framework for our projects. Our projects work well and stable on this framework but there may be still some unknown vulnerabilities or bugs that need to be found out and fixed. We are very happy to share this with all the developers and help you have a simple web framework to create various JSON or plain text APIs.
 
@@ -108,3 +105,9 @@ QuickNode has already added some useful js packages in it. For more details, ref
 We are going to make this open-source project better in the future.
 
 Thank you for your supporting and using QuickNode.
+
+## Our Qbite
+
+![Qbite](https://github-devilyouwei.oss-us-west-1.aliyuncs.com/qbite/qbite%20qrcode.jpg)
+
+*Scan the QRcode and order what you want!*
