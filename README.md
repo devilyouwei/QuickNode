@@ -9,6 +9,7 @@
 QuickNode is an open-source project separated from [Qbite](https://github.com/devilyouwei/Qbite).
 
 ![Qbite](https://github-devilyouwei.oss-us-west-1.aliyuncs.com/qbite/qbite%20qrcode.jpg)
+
 *Scan the QRcode and order what you want!*
 
 We(Qbyte LLC US) now use QuickNode as a back-end core framework for our projects. Our projects work well and stable on this framework but there may be still some unknown vulnerabilities or bugs that need to be found out and fixed. We are very happy to share this with all the developers and help you have a simple web framework to create various JSON or plain text APIs.
