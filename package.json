@@ -1,7 +1,17 @@
 {
-    "name": "QBite",
-    "description": "The backend of Qbite",
-    "version": "1.0.1",
+    "name": "quicknode",
+    "version": "1.1.0",
+    "keywords": [
+        "quicknode",
+        "qbite",
+        "RESTful",
+        "API",
+        "JSON",
+        "web"
+    ],
+    "description": "A simple and easy way for you to create RESTful API on Node.js.",
+    "main": "server.js",
+    "author": "devilyouwei",
     "dependencies": {
         "express": "latest",
         "stripe": "latest",
@@ -11,10 +21,10 @@
         "htmlspecialchars": "latest",
         "md5": "latest",
         "ali-oss": "latest",
-        "qr-image": "latest",
         "nodemailer": "latest",
         "nodemailer-smtp-transport": "latest",
         "superagent": "latest",
         "app-root-path": "latest"
-    }
+    },
+    "license": "MIT"
 }

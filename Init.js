@@ -5,36 +5,51 @@
  * MIT license
  * @returns {module}
  */
-const CTRL = __dirname+'/Controller/'
+const CTRL = __dirname + '/Controller/'
+const cfg = require('./Config/web.json')
 
-class Init{
-    static controller(app){
-        if(!app) return next('No App Object')
+class Init {
+    static controller(app) {
+        if (!app) return next('No App Object')
 
-		//http统一请求
-        app.all('*',(req,res,next)=>{
-            if(req.method=="GET") req.body = req.query // get强制转post参数
-            this.onlyPost(req,res,next)
+        //http统一请求
+        app.all('*', (req, res, next) => {
+            if (req.method == 'GET') req.body = req.query // get强制转post参数
+            this.onlyPost(req, res, next)
         })
     }
 
     //将所有get，post请求转换为post统一请求
-    static onlyPost(req,res,next){
-        let path = req.path
-        //取得控制器和方法
-        let ctl = path.split('/')[1]
-        let act = path.split('/')[2]
-        if(!ctl) return next('Error: No Controller given')
-        if(!act) return next('Error: No Action given')
-
+    static onlyPost(req, res, next) {
         try {
-            let Controller = require(CTRL+ctl)
+            let path = new String(req.path)
+
+            // 查询静态文件
+            if (path.indexOf('.') !== -1) return this.staticFile(path, res)
+            //取得控制器和方法
+            let ctl = path.split('/')[1] || 'Index'
+            let act = path.split('/')[2] || 'index'
+            if (!ctl) throw new Error('No Controller Given')
+            if (!act) throw new Error('No Action Given')
+            let Controller = require(CTRL + ctl)
             let Action = Controller[act]
-            Action(req,res)
-        } catch(err) {
-            next(err.message)
-            throw err
+            return Action(req, res)
+        } catch (err) {
+            console.error(err)
+            if (cfg.debug) return next(err)
+            return res
+                .status(404)
+                .end('<h1>Error</h1><p>Open Config/web.json debug mode to see the detail</>')
         }
+    }
+
+    // 当地址出现.符号，将会输出静态文件，文件来自static目录
+    static staticFile(path, res) {
+        path = 'static' + path
+        return res.sendFile(path, { root: __dirname }, err => {
+            console.error(err)
+            if (err) res.status(404).end('<h1>404 NOT FOUND</h1>')
+        })
     }
 }
 
