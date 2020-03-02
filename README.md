@@ -132,3 +132,7 @@ The Qbite backend is totally developed based on QuickNode, this is our example Q
 ![Qbite](https://github-devilyouwei.oss-us-west-1.aliyuncs.com/qbite/qbite%20qrcode.jpg)
 
 _Scan the QRcode and order some food now!_
+
+## GitHub
+
+<https://github.com/devilyouwei/QuickNode>
