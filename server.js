@@ -1,13 +1,10 @@
-/*
- * http启动服务
- */
-
+/* http启动服务 */
 const app = require('express')()
-const init = require('./Init')
 const multipart = require('connect-multiparty')
 const root = require('app-root-path')
-global.__ROOT = root.path //設置根目錄
+const init = require('./Init')
 
+global.__ROOT = root.path // 設置根目錄
 const allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*')
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
@@ -18,8 +15,7 @@ const allowCrossDomain = function(req, res, next) {
 app.use(allowCrossDomain)
 // 使用formData格式傳輸
 app.use(multipart())
-
-//MAP路由
+// MAP路由
 init.controller(app)
-
-app.listen(3000)
+const port = parseInt(process.argv[2])
+app.listen(port || 3000)

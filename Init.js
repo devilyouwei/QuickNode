@@ -10,8 +10,6 @@ const cfg = require('./Config/web.json')
 
 class Init {
     static controller(app) {
-        if (!app) return next('No App Object')
-
         //http统一请求
         app.all('*', (req, res, next) => {
             if (req.method == 'GET') req.body = req.query // get强制转post参数
@@ -19,7 +17,7 @@ class Init {
         })
     }
 
-    //将所有get，post请求转换为post统一请求
+    //映射get,post请求到对应文件
     static onlyPost(req, res, next) {
         try {
             let path = new String(req.path)

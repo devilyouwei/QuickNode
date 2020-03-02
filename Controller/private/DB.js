@@ -1,7 +1,8 @@
+// 数据库连接工具库
 const mysql = require('mysql2')
 const config = require('../../Config/db.json')
 const pool = mysql.createPool(config).promise()
-const debug = require('../../Config/web.json').debug_sql // 是否打開sql debug模式
+const debug = require('../../Config/web.json').debugDB // 是否打開sql debug模式
 
 // 优雅async与await
 class DB {
@@ -16,6 +17,16 @@ class DB {
         }
     }
 
+    static async insert(table, data) {
+        try {
+            let res = await pool.query(`insert into ${table} set ?`, data)
+            return res[0]['insertId']
+        } catch (e) {
+            if (debug) throw e
+            else return null
+        }
+    }
+
     //事务
     static async transaction() {
         try {
@@ -24,7 +35,8 @@ class DB {
             return conn
         } catch (e) {
             // 事務一定要拋出異常
-            throw e
+            if (debug) throw e
+            else return null
         }
     }
 }

@@ -1,6 +1,6 @@
 {
-    "key":"",
-    "currency":"",
-    "description":"",
-    "struct": [ { "title": "stripe", "value": 0, "currency": "dollar" } ]
+    "key": "",
+    "currency": "",
+    "description": "",
+    "struct": [{ "title": "stripe", "value": 0, "currency": "dollar" }]
 }

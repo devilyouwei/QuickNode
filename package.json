@@ -1,6 +1,7 @@
 {
     "name": "quicknode",
-    "version": "1.1.0",
+    "version": "1.1.1",
+    "author": "devilyouwei",
     "keywords": [
         "quicknode",
         "qbite",
@@ -11,7 +12,6 @@
     ],
     "description": "A simple and easy way for you to create RESTful API on Node.js.",
     "main": "server.js",
-    "author": "devilyouwei",
     "dependencies": {
         "express": "latest",
         "stripe": "latest",
@@ -25,6 +25,37 @@
         "nodemailer-smtp-transport": "latest",
         "superagent": "latest",
         "app-root-path": "latest"
+    },
+    "devDependencies": {
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.10.0",
+        "eslint-plugin-prettier": "^3.1.2",
+        "prettier": "^1.19.1"
+    },
+    "eslintConfig": {
+        "root": true,
+        "parserOptions": {
+            "ecmaVersion": 2017,
+            "parser": "babel-eslint"
+        },
+        "env": {
+            "es6": true,
+            "node": true
+        },
+        "plugins": [
+            "prettier"
+        ],
+        "extends": [
+            "eslint:recommended",
+            "plugin:prettier/recommended"
+        ],
+        "rules": {
+            "no-console": "off",
+            "no-unused-vars": "warn",
+            "prettier/prettier": [
+                "error"
+            ]
+        }
     },
     "license": "MIT"
 }

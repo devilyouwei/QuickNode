@@ -2,8 +2,8 @@
     "host": "smtp.gmail.com",
     "secure": true,
     "auth": {
-        "type":"login",
-        "user":"",
-        "pass":""
+        "type": "",
+        "user": "",
+        "pass": ""
     }
 }
