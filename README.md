@@ -62,7 +62,7 @@ Index is Controller, index is Action
 
 **Example**
 
-![Successful example](./static/ex1.png)
+![Successful example](https://github.com/devilyouwei/QuickNode/blob/master/static/ex1.png)
 
 **Recommend to use supervisor**
 
@@ -104,7 +104,7 @@ module.exports = Test
 
 Now, you can try to visit: http://localhost:3000/Test/test
 
-![Successful example](./static/ex2.png)
+![Successful example](https://github.com/devilyouwei/QuickNode/blob/master/static/ex1.png)
 
 Example works!
 
