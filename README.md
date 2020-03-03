@@ -2,7 +2,7 @@
 
 ![Qbite](https://wap.qbite.us/favicon.png 'Qbite, faster order')
 
-**_An easier way to create RESTful APIs for web applications with Node.js_**
+**_An easier way(Convention Routing) to create RESTful APIs for web applications with Node.js_**
 
 ## Introduction
 
@@ -10,9 +10,12 @@ QuickNode is an open-source project separated from [Qbite](https://github.com/de
 
 We(Qbyte LLC US) now use QuickNode as a back-end core framework for our projects. Our projects work well and stable on this framework but there may be still some unknown vulnerabilities or bugs that need to be found out and fixed. We are very happy to share this with all the developers and help you have a simple web framework to create various JSON or plain text APIs.
 
-QuickNode is based on Node.js and expressJS to handle HTTP requests and responses. Based on them, QuickNode uses a better URL mode to handle the HTTP data exchange. It just looks like http://localhost:3000/Index/index. It's easy to understand that first part is domain and port, the second part is the controller and after the controller is the action. This URL mode has already been used in many popular MVC frameworks such as ThinkPHP.
+QuickNode is based on Node.js and expressJS to handle HTTP requests and responses.
 
-You may come from PHP, JavaEE or Node.js. Never mind, you'll find it is similar.
+QuickNode uses a better URL mode(Convention Routing) to handle the HTTP data exchange. So in QuickNode, you never config
+router any more. When you want to provide a new API for frontend, the only thing you need to do is creating a class file or add actions in a class file in Controller.
+
+It looks like 'http://localhost:3000/Index/index'. It's easy to understand that first part is domain and port, the second part is the controller and after the controller is the action. This URL mode has already been used in many popular MVC frameworks such as ThinkPHP.
 
 ## Quick Start
 
@@ -27,18 +30,14 @@ After you install Node.js you need to do the following steps to start a project.
 **Use git clone to install**
 
 ```bash
-git clone https://github.com/devilyouwei/QuickNode.github
+git clone https://github.com/devilyouwei/QuickNode.git
 ```
 
 **Go to the project directory**
 
 ```bash
 npm install
-```
 
-**Start server**
-
-```bash
 node ./
 ```
 
@@ -71,28 +70,30 @@ It's a better way to use supervisor instead of node.
 ```
 npm install -g supervisor
 
-supervisor ./Server.js
+supervisor ./
 ```
 
-Supervisor will re-run the latest code dynamically and automatically after you make some changes.
+Supervisor will re-run the code dynamically and automatically after you make some changes.
 
 ## How it works?
 
-After you finish the quick start. You will be ready to create APIs for your web projects.
+After you finish the quick start. You are ready to create APIs.
 
 Look at the directory tree in QuickNode.
 
-You are going to create new controllers and actions in the directory called 'Controller'
+You will create new controllers and actions in the directory called 'Controller'
 
-Each class file in the 'Controller' directory will map a controller, and each function in the class file will map an action.
+Each class file(controller) in the 'Controller' directory will map to a controller, and each function in the class file will map to an action.
 
-After you clone or download QuickNode, you can create class files in 'Controller' directory by referring to the examples in it.
+In all, QuickNode will map the URL(http://localhost/controller/action) to the controller and the action in 'Controller directory'.
+
+You don't need to config anything for the routings.
 
 ## Example
 
-For example, you create a file named 'Test.js', and edit it with class 'Test', add a function in this class, name 'test'.
+For example, you create a file named 'Test.js', there is a class named 'Test' and a function named 'test' in it.
 
-You want it return a JSON data type.
+Also, you want to return a JSON data type.
 
 ```js
 class Test {
@@ -108,17 +109,23 @@ Now, you try to visit: http://localhost:3000/Test/test
 
 ![Successful example](https://github-devilyouwei.oss-us-west-1.aliyuncs.com/quicknode/ex2.png)
 
-It works and you get json!
+It works and you get JSON from this API!
 
 ## Config
 
 The directory 'Config' is used to store the configuration files for your project.
 
-You can edit your MySQL connection configuration in db.json. Also, you can config your SMTP server and OSS sever info to connect with them.
+-   web.json: the global configuration for your website.
+-   db.json: the configuration for your database connection.
+-   smtp.json: the configuration for your smtp server to send email.
+-   stripe.json: only if you are using stripe, not required.
+-   oss.json: only if you are using Ali-OSS server, not required.
 
 QuickNode has already added some useful node packages in it. For more details, refer to package.json
 
-We also recommend to use prettier lint rules for the project. However, if you don't like prettier, you can just remove from
+If you are going to add some other third-party libs, add configuration files(json files) in 'Config' directory, and require them when necessary
+
+We also recommend to use prettier lint rules for the project. However, if you don't like prettier, you can just remove it from
 the package.json
 
 ## Login and Register Example
@@ -223,6 +230,12 @@ class User {
 module.exports = User
 ```
 
+## Static Files
+
+Static files such as zips, images, css... that you will visit directly like: http://localhost/ex.png
+
+Put them in directory 'static'
+
 ## Thank you
 
 We are going to make this open-source project better in the future.
@@ -231,11 +244,11 @@ Thank you for your supporting and using QuickNode.
 
 ## Our Qbite
 
-The Qbite backend is totally developed based on QuickNode, this is our example Qbite.
+The Qbite backend is totally developed based on QuickNode, this is our example.
 
 ![Qbite](https://github-devilyouwei.oss-us-west-1.aliyuncs.com/qbite/qbite%20qrcode.jpg)
 
-_Scan the QRcode and order some food now!_
+Scan the QRcode and order some food now!
 
 ## GitHub
 
