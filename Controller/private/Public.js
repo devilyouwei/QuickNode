@@ -140,6 +140,7 @@ class Public {
             return null
         }
     }
+    // filter special characters and spaces
     static fitTxt(text) {
         try {
             if (typeof text == 'object') {

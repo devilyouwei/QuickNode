@@ -123,7 +123,7 @@ the package.json
 
 ## Login and Register Example
 
-This is an example for user login and reister APIs. It shows how to connect MySQL, send verify email, use md5 to encrypt
+This is an example for user login and register APIs. It shows how to connect MySQL, send verify email, use md5 to encrypt
 
 ```js
 const md5 = require('md5')
