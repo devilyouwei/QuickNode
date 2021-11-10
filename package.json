@@ -1,28 +1,25 @@
 {
     "name": "quicknode",
-    "version": "1.1.5",
+    "version": "1.1.6",
     "author": "devilyouwei",
     "keywords": [
         "quicknode",
-        "qbite",
+        "nodejs",
         "RESTful",
         "API",
-        "JSON",
-        "web"
+        "web framework",
+        "Convention Routing",
+        "MVC"
     ],
     "description": "A simple and easy way for you to create RESTful API on Node.js.",
     "main": "server.js",
     "dependencies": {
         "express": "latest",
-        "stripe": "latest",
         "mysql2": "latest",
         "connect-multiparty": "latest",
         "trim": "latest",
         "htmlspecialchars": "latest",
         "md5": "latest",
-        "ali-oss": "latest",
-        "nodemailer": "latest",
-        "nodemailer-smtp-transport": "latest",
         "superagent": "latest",
         "app-root-path": "latest"
     },
@@ -56,6 +53,17 @@
                 "error"
             ]
         }
+    },
+    "prettier": {
+        "trailingComma": "none",
+        "printWidth": 120,
+        "tabWidth": 4,
+        "semi": false,
+        "bracketSpacing": true,
+        "htmlWhitespaceSensitivity": "ignore",
+        "arrowParens": "avoid",
+        "singleQuote": true,
+        "endOfLine": "auto"
     },
     "license": "MIT"
 }

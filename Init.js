@@ -35,9 +35,7 @@ class Init {
         } catch (err) {
             console.error(err)
             if (cfg.debug) return next(err)
-            return res
-                .status(404)
-                .end('<h1>Error</h1><p>Open Config/web.json debug mode to see the detail</>')
+            return res.status(404).end('<h1>Error</h1><p>Open Config/web.json debug mode to see the detail</>')
         }
     }
 
