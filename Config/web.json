@@ -1,6 +1,0 @@
-{
-    "domainBack":"http://localhost:3001",
-    "domainFront":"http://localhost:3000",
-    "debug":true,
-    "debugDB":true
-}

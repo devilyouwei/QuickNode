@@ -1,4 +1,5 @@
 /* http启动服务 */
+require('dotenv').config()
 const app = require('express')()
 const multipart = require('connect-multiparty')
 const root = require('app-root-path')
@@ -17,5 +18,4 @@ app.use(allowCrossDomain)
 app.use(multipart())
 // MAP路由
 init.controller(app)
-const port = parseInt(process.argv[2])
-app.listen(port || 3000)
+app.listen(process.env.APP_PORT)

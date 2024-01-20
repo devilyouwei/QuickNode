@@ -6,7 +6,6 @@
  * @returns {module}
  */
 const CTRL = __dirname + '/Controller/'
-const cfg = require('./Config/web.json')
 
 class Init {
     static controller(app) {
@@ -29,13 +28,14 @@ class Init {
             let act = path.split('/')[2] || 'index'
             if (!ctl) throw new Error('No Controller Given')
             if (!act) throw new Error('No Action Given')
-            let Controller = require(CTRL + ctl)
-            let Action = Controller[act]
-            return Action(req, res)
+
+            let controller = require(CTRL + ctl)
+            let action = controller[act]
+            if (!action) throw new Error('Action not found')
+            return action(req, res)
         } catch (err) {
             console.error(err)
-            if (cfg.debug) return next(err)
-            return res.status(404).end('<h1>Error</h1><p>Open Config/web.json debug mode to see the detail</>')
+            res.json({ status: 0, msg: err.message })
         }
     }
 

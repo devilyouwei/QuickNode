@@ -33,47 +33,59 @@ After you install Node.js you need to do the following steps to start a project.
 git clone https://github.com/devilyouwei/QuickNode.git
 ```
 
+**Add `.env` file**
+
+```bash
+# APP
+APP_NAME=Quick Node
+APP_PORT=3000
+APP_URL=http://localhost:3000
+
+# DB
+DB_DIALECT=mysql
+MYSQL_HOST=localhost
+MYSQL_USER=web3
+MYSQL_PASS=web3
+MYSQL_DB=web3
+
+# OSS
+# ...
+```
+
 **Go to the project directory**
 
 ```bash
 npm install
+# or
+yarn
 
-node ./
-```
-
-**Or use npm to install**
-
-```bash
-mkdir test && cd test
-
-npm install quicknode
-
-cp -r ./node_modules/quicknode/* ./
-
-node ./
+npm run dev
+# or
+yarn dev
 ```
 
 **Open your browser**
 
 Input address: http://localhost:3000/Index/index
 
-Index is Controller, index is Action
+Index is `Controller`, index is `Action`
 
 **Example**
 
 ![Successful example](https://github-devilyouwei.oss-us-west-1.aliyuncs.com/quicknode/ex1.png)
 
-**Recommend to use supervisor**
-
-It's a better way to use supervisor instead of node.
+**We use PM2**
 
 ```
-npm install -g supervisor
+# dev mode
+yarn dev
 
-supervisor ./
+# product mode
+yarn start
+
+# list all services
+yarn pm2 list
 ```
-
-Supervisor will re-run the code dynamically and automatically after you make some changes.
 
 ## How it works?
 
@@ -163,10 +175,13 @@ class User {
             let id = 0
             if (data[0]) {
                 //user has registered
-                const flag = await db.query(
-                    'update users set username=?,password=?,code=?,createtime=? where id=?',
-                    [user.username, user.password, user.code, user.createtime, data[0].id]
-                )
+                const flag = await db.query('update users set username=?,password=?,code=?,createtime=? where id=?', [
+                    user.username,
+                    user.password,
+                    user.code,
+                    user.createtime,
+                    data[0].id
+                ])
                 if (flag && flag.changedRows > 0) id = data[0].id
             } else id = await db.insert('users', user)
             if (id)
@@ -186,8 +201,7 @@ class User {
             if (!verify) throw new Error('Invalid verify url')
             const sql = `update users set is_effect=1 where code=?`
             const flag = await db.query(sql, [verify])
-            if (flag && flag.changedRows > 0)
-                return res.end('Verify your email successfully! Go to sign in now')
+            if (flag && flag.changedRows > 0) return res.end('Verify your email successfully! Go to sign in now')
             throw new Error('Fail to verify your email')
         } catch (e) {
             return res.end(e.message)
@@ -197,26 +211,15 @@ class User {
         try {
             const user = req.body
             user.password = md5(user.password)
-            let data = await db.query('select * from users where email=? and password=?', [
-                user.email,
-                user.password
-            ])
+            let data = await db.query('select * from users where email=? and password=?', [user.email, user.password])
             if (data[0]) {
-                if (!data[0].is_effect)
-                    throw new Error('Unverified email, please verify your email first')
+                if (!data[0].is_effect) throw new Error('Unverified email, please verify your email first')
                 // generate token
-                const token = md5(
-                    `${md5(new Date().getTime())}${user.password}${user.username}${
-                        user.email
-                    }myresource`
-                )
+                const token = md5(`${md5(new Date().getTime())}${user.password}${user.username}${user.email}myresource`)
                 data[0].token = token
                 delete data[0].password
                 delete data[0].createtime
-                const flag = await db.query('update users set token=? where id=?', [
-                    token,
-                    data[0].id
-                ])
+                const flag = await db.query('update users set token=? where id=?', [token, data[0].id])
                 if (flag && flag.changedRows > 0)
                     return res.json({ status: 1, data: data[0], msg: 'successs to login' })
                 throw new Error('Fail to update user login status')

@@ -1,6 +1,5 @@
-const $ = require('./private/Public.js')
+/*
 const OSS = require('ali-oss')
-const config = require('../Config/oss.json')
 const fs = require('fs')
 const client = new OSS(config)
 
@@ -10,8 +9,7 @@ class Upload {
         let user = await $.auth(req.body.user)
         if (!user) return res.json({ status: -1, msg: '未登錄或登錄狀態失效' })
         let file = req.files.file
-        if (file.size > LIMIT_SIZE_IMG)
-            return res.json({ status: 0, msg: '請上傳小於5MB的圖片文件' })
+        if (file.size > LIMIT_SIZE_IMG) return res.json({ status: 0, msg: '請上傳小於5MB的圖片文件' })
         let sourcePath = file.path
         let newFileName = $.date2stamp() + user.id + '.' + sourcePath.split('.').pop()
         try {
@@ -28,3 +26,5 @@ class Upload {
     }
 }
 module.exports = Upload
+
+*/

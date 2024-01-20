@@ -1,9 +1,0 @@
-{
-    "host": "smtp.gmail.com",
-    "secure": true,
-    "auth": {
-        "type": "",
-        "user": "",
-        "pass": ""
-    }
-}
