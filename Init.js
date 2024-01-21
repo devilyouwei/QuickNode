@@ -5,9 +5,10 @@
  * MIT license
  * @returns {module}
  */
+
 const CTRL = __dirname + '/Controller/'
 
-class Init {
+module.exports = class {
     static controller(app) {
         //http统一请求
         app.all('*', (req, res, next) => {
@@ -19,23 +20,24 @@ class Init {
     //映射get,post请求到对应文件
     static onlyPost(req, res, next) {
         try {
-            let path = new String(req.path)
+            const path = new String(req.path)
 
             // 查询静态文件
             if (path.indexOf('.') !== -1) return this.staticFile(path, res)
             //取得控制器和方法
-            let ctl = path.split('/')[1] || 'Index'
-            let act = path.split('/')[2] || 'index'
+            const ctl = path.split('/')[1] || 'Index'
+            const act = path.split('/')[2] || 'index'
             if (!ctl) throw new Error('No Controller Given')
             if (!act) throw new Error('No Action Given')
 
-            let controller = require(CTRL + ctl)
-            let action = controller[act]
+            const controller = require(CTRL + ctl)
+            const action = controller[act]
             if (!action) throw new Error('Action not found')
+
             return action(req, res)
-        } catch (err) {
-            console.error(err)
-            res.json({ status: 0, msg: err.message })
+        } catch (e) {
+            console.error(e)
+            res.json({ status: 0, msg: e.message })
         }
     }
 
@@ -48,5 +50,3 @@ class Init {
         })
     }
 }
-
-module.exports = Init

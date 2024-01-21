@@ -3,38 +3,64 @@ const { DataTypes } = require('sequelize')
 // example for table model
 
 module.exports = {
-    Contract: {
-        name: 'contract',
+    CTMasterChild: {
+        name: 'CTMasterChild',
         table: {
-            Id: { type: DataTypes.INTEGER(11), primaryKey: true, autoIncrement: true },
-            TxHash: DataTypes.STRING,
-            Network: DataTypes.STRING,
-            ContractAddress: { type: DataTypes.STRING, unique: true },
-            SourceCode: DataTypes.TEXT('medium'),
-            ABI: DataTypes.TEXT,
-            ContractName: DataTypes.STRING,
-            CompilerVersion: DataTypes.STRING,
-            OptimizationUsed: DataTypes.BOOLEAN,
-            Runs: DataTypes.INTEGER(11),
-            ConstructorArguments: DataTypes.TEXT,
-            EVMVersion: DataTypes.STRING,
-            Library: DataTypes.TEXT,
-            LicenseType: DataTypes.STRING,
-            Proxy: DataTypes.STRING,
-            Implementation: DataTypes.STRING,
-            SwarmSource: DataTypes.STRING,
-            Creator: DataTypes.STRING,
-            ContractType: DataTypes.STRING,
-            Embedding: DataTypes.TEXT('long')
+            id: {
+                type: DataTypes.INTEGER.UNSIGNED,
+                primaryKey: true,
+                autoIncrement: true,
+                allowNull: false,
+                comment: '自增id'
+            },
+            unique: {
+                type: DataTypes.STRING(50),
+                allowNull: false,
+                defaultValue: '',
+                comment: '唯一值  就是数据的md5'
+            },
+            master_id: {
+                type: DataTypes.INTEGER.UNSIGNED,
+                allowNull: false,
+                defaultValue: 0,
+                comment: '主表信息'
+            },
+            position_id: {
+                type: DataTypes.INTEGER.UNSIGNED,
+                allowNull: false,
+                defaultValue: 0,
+                comment: '主表信息'
+            },
+            file_path: {
+                type: DataTypes.STRING(500),
+                allowNull: false,
+                defaultValue: '',
+                comment: '原资源地址'
+            },
+            oss_url: {
+                type: DataTypes.STRING(200),
+                allowNull: false,
+                defaultValue: '',
+                comment: 'oss地址'
+            },
+            text: {
+                type: DataTypes.TEXT,
+                comment: '解析内容'
+            }
         },
         options: {
-            charset: 'utf8mb4',
-            collate: 'utf8mb4_general_ci',
+            tableName: 'ct_master_child',
+            timestamps: false,
             indexes: [
                 {
-                    name: 'contract_network_index',
-                    method: 'BTREE',
-                    fields: ['Network']
+                    unique: true,
+                    fields: ['unique']
+                },
+                {
+                    fields: ['master_id']
+                },
+                {
+                    fields: ['position_id']
                 }
             ]
         }

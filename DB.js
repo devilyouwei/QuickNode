@@ -15,4 +15,4 @@ function model() {
     return tables
 }
 
-module.exports = model
+module.exports = model()
